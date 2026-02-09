@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Exclusão de Conta e Dados – Coordenador.App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <img src="logo.png" alt="Logotipo Coordenador.App" />
+      <div>
+        <h1>Exclusão de Conta e Dados</h1>
+        <div class="small">
+          Aplicativo: <strong>Coordenador.App</strong> • Desenvolvedor:
+          <strong>Sérgio Roberto</strong>
+        </div>
+      </div>
+    </header>
+    <main class="container">
+      <div class="card">
+        <h2>Resumo rápido</h2>
+        <p>
+          Este canal permite que você solicite a
+          <strong>exclusão permanente da sua conta</strong> e dos seus dados
+          pessoais no Coordenador.App.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>O que é excluído?</h2>
+        <ul class="list">
+          <li>Dados de perfil (nome, e-mail, avatar) e credenciais.</li>
+          <li>Horários criados e agendamentos associados à sua conta.</li>
+          <li>Tokens de notificação push vinculados ao seu dispositivo.</li>
+        </ul>
+        <p>
+          <strong>Observação:</strong> alguns registros podem ser
+          <strong>anonimizados</strong> para manter histórico de reuniões de
+          outros usuários.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Como solicitar</h2>
+        <ol class="list">
+          <li>
+            <strong>Via formulário nesta página</strong>: preencha os campos
+            abaixo e envie a solicitação.
+          </li>
+          <li>
+            <strong>Por e-mail</strong>: envie para
+            <a class="link" href="mailto:gt.computacao.tl@gmail.com"
+              >gt.computacao.tl@gmail.com</a
+            >
+            com o assunto “Exclusão de Conta – Coordenador.App”.
+          </li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h2>Formulário de Solicitação</h2>
+        <form
+          class="form"
+          method="POST"
+          action="http://localhost:3000/email/delete-account"
+        >
+          <label
+            >Nome completo <span class="required">*</span>
+            <input required name="name" placeholder="Seu nome" />
+          </label>
+
+          <label
+            >E-mail da conta (login) <span class="required">*</span>
+            <input
+              required
+              type="email"
+              name="email"
+              placeholder="voce@exemplo.com"
+            />
+          </label>
+
+          <label
+            >Motivo (opcional)
+            <textarea
+              name="message"
+              rows="4"
+              placeholder="Conte, se quiser, o motivo do pedido"
+            ></textarea>
+          </label>
+
+          <fieldset>
+            <label>
+              <input required type="checkbox" name="confirmacao" />
+              Confirmo que desejo excluir permanentemente minha conta.
+            </label>
+          </fieldset>
+
+          <button class="button" type="submit">Enviar solicitação</button>
+        </form>
+
+        <p style="margin-top: 10px">
+          <a
+            class="button"
+            href="mailto:gt.computacao.tl@gmail.com?subject=Exclus%C3%A3o%20de%20Conta%20%E2%80%93%20Coordenador.App"
+            >Solicitar por e-mail</a
+          >
+        </p>
+      </div>
+    </main>
+    <footer>© 2025 Coordenador.App. Todos os direitos reservados.</footer>
+  </body>
+</html>

@@ -4,6 +4,7 @@ import * as nodemailer from 'nodemailer';
 @Injectable()
 export class EmailService {
   private transporter;
+  private transporterPolicy;
 
   constructor() {
     this.transporter = nodemailer.createTransport({
@@ -11,6 +12,14 @@ export class EmailService {
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    this.transporterPolicy = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.POLICY_EMAIL_USER,
+        pass: process.env.POLICY_EMAIL_PASS,
       },
     });
   }
@@ -23,12 +32,24 @@ export class EmailService {
       text,
     });
   }
+  async sendPolicyEmail(
+    to: string,
+    subject: string,
+    text: string,
+  ): Promise<void> {
+    await this.transporterPolicy.sendMail({
+      from: process.env.POLICY_EMAIL_USER,
+      to,
+      subject,
+      text,
+    });
+  }
   async sendResetPasswordCode(email: string, code: string) {
-  await this.transporter.sendMail({
-    to: email,
-    subject: 'Código para redefinição de senha',
-    text: `Seu código é: ${code}`,
-    html: `<p>Use o código abaixo para redefinir sua senha:</p><h2>${code}</h2>`,
-  });
-}
+    await this.transporter.sendMail({
+      to: email,
+      subject: 'Código para redefinição de senha',
+      text: `Seu código é: ${code}`,
+      html: `<p>Use o código abaixo para redefinir sua senha:</p><h2>${code}</h2>`,
+    });
+  }
 }
